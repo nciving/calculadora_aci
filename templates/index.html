@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora ACI</title>
+</head>
+<body>
+    <h1>Calculadora de Concreto ACI</h1>
+    <form action="/calcular" method="post">
+        <label>Volumen de concreto (m³):</label><br>
+        <input type="number" name="volumen" step="0.01" required><br><br>
+
+        <label>Peso por bulto de cemento (kg):</label><br>
+        <input type="number" name="peso_bulto" step="0.1" required><br><br>
+
+        <label>Precio por bulto de cemento:</label><br>
+        <input type="number" name="precio_bulto" step="0.1" required><br><br>
+
+        <label>Precio por m³ de arena:</label><br>
+        <input type="number" name="precio_arena" step="0.1" required><br><br>
+
+        <label>Precio por m³ de grava:</label><br>
+        <input type="number" name="precio_grava" step="0.1" required><br><br>
+
+        <label>Precio por litro de agua:</label><br>
+        <input type="number" name="precio_agua" step="0.01" required><br><br>
+
+        <input type="submit" value="Calcular">
+    </form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
