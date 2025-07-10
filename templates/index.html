@@ -1,39 +1,88 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Calculadora ACI</title>
+  <meta charset="UTF-8">
+  <title>NCIVING – Calculadora ACI</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('https://cdn.openai.com/chatgpt/landing-page/concrete-bg-1.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #333;
+    }
+    .container {
+      background: rgba(255, 255, 255, 0.9);
+      max-width: 500px;
+      margin: 80px auto;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 30px;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+    }
+    input {
+      width: 100%;
+      padding: 8px 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    input[type="submit"] {
+      margin-top: 25px;
+      background-color: #2c3e50;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    input[type="submit"]:hover {
+      background-color: #1a242f;
+    }
+    .brand {
+      text-align: center;
+      font-size: 14px;
+      color: #888;
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
-    <h1>Calculadora de Concreto ACI</h1>
+  <div class="container">
+    <h1>NCIVING – Calculadora ACI</h1>
     <form action="/calcular" method="post">
-        <label>Volumen de concreto (m³):</label><br>
-        <input type="number" name="volumen" step="0.01" required><br><br>
+      <label>Volumen de concreto (m³):</label>
+      <input type="number" name="volumen" step="0.01" required>
 
-        <label>Peso por bulto de cemento (kg):</label><br>
-        <input type="number" name="peso_bulto" step="0.1" required><br><br>
+      <label>Peso por bulto de cemento (kg):</label>
+      <input type="number" name="peso_bulto" step="0.1" required>
 
-        <label>Precio por bulto de cemento:</label><br>
-        <input type="number" name="precio_bulto" step="0.1" required><br><br>
+      <label>Precio por bulto de cemento:</label>
+      <input type="number" name="precio_bulto" step="0.1" required>
 
-        <label>Precio por m³ de arena:</label><br>
-        <input type="number" name="precio_arena" step="0.1" required><br><br>
+      <label>Precio por m³ de arena:</label>
+      <input type="number" name="precio_arena" step="0.1" required>
 
-        <label>Precio por m³ de grava:</label><br>
-        <input type="number" name="precio_grava" step="0.1" required><br><br>
+      <label>Precio por m³ de grava:</label>
+      <input type="number" name="precio_grava" step="0.1" required>
 
-        <label>Precio por litro de agua:</label><br>
-        <input type="number" name="precio_agua" step="0.01" required><br><br>
+      <label>Precio por litro de agua:</label>
+      <input type="number" name="precio_agua" step="0.01" required>
 
-        <input type="submit" value="Calcular">
+      <input type="submit" value="Calcular">
     </form>
+    <div class="brand">Powered by NCIVING</div>
+  </div>
 </body>
 </html>
-
-
-
-
-
-
-
 
 
