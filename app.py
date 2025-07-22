@@ -2,64 +2,89 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
+# =====================
 # Página principal
-@app.route('/')
+# =====================
+@app.route("/")
 def home():
-    return render_template('home.html')
+    return render_template("home.html")
 
-# Página de cálculo ACI (ya existente)
-@app.route('/aci')
+
+# =====================
+# SECCIÓN ACI
+# =====================
+@app.route("/aci")
 def aci():
-    return render_template('index.html')
+    return render_template("aci.html")
 
-# Página de Geotecnia – Muros
-@app.route('/geotecnia')
-def geotecnia():
-    return render_template('muros.html')
+@app.route("/calcular_aci", methods=["POST"])
+def calcular_aci():
+    try:
+        volumen = float(request.form["volumen"])
+        peso_bulto = float(request.form["peso_bulto"])
+        precio_bulto = float(request.form["precio_bulto"])
+        precio_arena = float(request.form["precio_arena"])
+        precio_grava = float(request.form["precio_grava"])
+        precio_agua = float(request.form["precio_agua"])
 
-# Ruta de cálculo (ya la tenés armada con tu lógica actual)
-@app.route('/calcular', methods=['POST'])
-def calcular():
-    # Acá mantené la lógica que ya tenías para calcular cemento, arena, etc.
-    # Ejemplo base:
-    volumen = float(request.form['volumen'])
-    peso_bulto = float(request.form['peso_bulto'])
-    precio_bulto = float(request.form['precio_bulto'])
-    precio_arena = float(request.form['precio_arena'])
-    precio_grava = float(request.form['precio_grava'])
-    precio_agua = float(request.form['precio_agua'])
+        # Resultados simulados por ahora (puedes conectar tu lógica real)
+        resultado = {
+            "cemento": round(volumen * 320 / peso_bulto, 2),
+            "arena": round(volumen * 0.48, 2),
+            "grava": round(volumen * 0.96, 2),
+            "agua": round(volumen * 180, 2),  # en litros
+            "costo_total": round(
+                (volumen * 320 / peso_bulto) * precio_bulto +
+                (volumen * 0.48) * precio_arena +
+                (volumen * 0.96) * precio_grava +
+                (volumen * 180) * precio_agua,
+                2
+            )
+        }
 
-    cemento = 0.25
-    arena = 0.35
-    grava = 0.40
-    agua = 180
+        return render_template("resultado_aci.html", resultado=resultado)
 
-    bultos = round((volumen * cemento * 1000) / peso_bulto, 2)
-    arena_total = round(volumen * arena, 2)
-    grava_total = round(volumen * grava, 2)
-    agua_total = round(volumen * agua, 2)
+    except Exception as e:
+        return f"⚠️ Error en formulario ACI: {str(e)}"
 
-    costo_total = round(
-        (bultos * precio_bulto) + 
-        (arena_total * precio_arena) + 
-        (grava_total * precio_grava) + 
-        (agua_total * precio_agua), 2
-    )
 
-    return render_template(
-        'resultado.html',
-        volumen=volumen,
-        bultos=bultos,
-        arena=arena_total,
-        grava=grava_total,
-        agua=agua_total,
-        costo_total=costo_total
-    )
+# =====================
+# SECCIÓN MUROS
+# =====================
+@app.route("/muros")
+def muros():
+    return render_template("muros.html")
 
+@app.route("/calcular_muro", methods=["POST"])
+def calcular_muro():
+    try:
+        H = float(request.form["H"])
+        gamma_suelo = float(request.form["gamma_suelo"])
+        phi = float(request.form["phi"])
+        alpha = float(request.form["alpha"])
+        beta = float(request.form["beta"])
+        gamma_concreto = float(request.form["gamma_concreto"])
+
+        resultado = {
+            "H": H,
+            "gamma_suelo": gamma_suelo,
+            "phi": phi,
+            "alpha": alpha,
+            "beta": beta,
+            "gamma_concreto": gamma_concreto
+        }
+
+        return render_template("resultado_muros.html", resultado=resultado)
+
+    except Exception as e:
+        return f"⚠️ Error en formulario Muro: {str(e)}"
+
+
+# =====================
+# Ejecutar app
+# =====================
 if __name__ == "__main__":
-    import os
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
+    app.run(debug=True)
 
 
 

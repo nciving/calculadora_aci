@@ -1,0 +1,58 @@
+body {
+    background: #2e2e2e url("/static/fondo_medellin.png") no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+header img {
+    max-height: 100px;
+    margin-bottom: 10px;
+}
+
+h1 {
+    color: #ffffff;
+}
+
+.seccion h2 {
+    color: #ffffff;
+    text-align: center;
+
+
+    border-bottom: 2px solid #888;
+    padding-bottom: 0.3rem;
+    margin-top: 2rem;
+}
+
+.modulo {
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 1.2rem;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    margin: 1rem auto;
+    max-width: 700px;
+    transition: transform 0.2s ease;
+    text-align: center;
+}
+
+.modulo:hover {
+    transform: translateY(-5px);
+}
+
+.modulo h3 a {
+    color: #004d40;
+    text-decoration: none;
+    font-size: 1.3rem;
+}
+
+.modulo p {
+    color: #555;
+    margin-top: 0.4rem;
+}
+
